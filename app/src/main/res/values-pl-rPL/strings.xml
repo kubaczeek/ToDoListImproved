@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GetThingsDone</string>
+    <string name="add_task">Dodaj rzecz do zrobienia</string>
+    <string name="addBtn">DODAJ</string>
+    <string name="item_added">zostalo dodane</string>
+    <string name="really_delete">Czy chcesz usunąć to zadanie z listy?</string>
+    <string name="task_cant_empty">Wiem ze jestes leniwy, ale musisz cos wpisac :D</string>
+    <string name="del_btn">Usun</string>
+    <string name="item_removed_info">zostal usuniety</string>
+    <string name="no_btn">Nie, oznacz jako zrobione</string>
+    <string name="yes_btn">Tak</string>
+    <string name="change_lang">Zostan w jezyku polskim</string>
+    <string name="change_lang2">Change to English</string>
+    <string name="how_to_add"> "Wypelnij pole tekstowe i wcisnij Dodaj!"</string>
+    <string name="how_to_delete">" Dotknij wiersza i potwierdz w oknie!"</string>
+    <string name="item_marked_info"> zostalo oznaczone jako zrobione</string>
+</resources>

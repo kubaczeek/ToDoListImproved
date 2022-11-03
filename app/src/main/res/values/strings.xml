@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">GetThingsDone</string>
+    <string name="add_task">Add Task</string>
+    <string name="addBtn">ADD</string>
+    <string name="item_added"> has been added to list!</string>
+    <string name="how_to_add"> "Type data in input and click Add button!"</string>
+    <string name="how_to_delete"> "Click on item, which You want to delete!"</string>
+    <string name="really_delete">Do you want to delete this item from the list?</string>
+    <string name="task_cant_empty">I know that You are lazy, but You can not add empty task :D</string>
+    <string name="del_btn">Delete</string>
+    <string name="item_removed_info"> has been removed</string>
+    <string name="item_marked_info"> has been marked as done</string>
+    <string name="no_btn">No, mark as done</string>
+    <string name="yes_btn">Yes</string>
+    <string name="change_lang">Change to Polish</string>
+    <string name="change_lang2">Change to English</string>
+    <string name="done_24" translatable="false">&#x2713;</string>
+    <string name="not_done_24" translatable="false">&#xe7f7;</string>
+</resources>
