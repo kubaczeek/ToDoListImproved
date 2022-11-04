@@ -3,13 +3,13 @@ package com.example.todolist;
 import static android.content.ContentValues.TAG;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
-    public Integer counter = arrayList.size();
+    public Integer todo = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.ListView);
 
         arrayList = FileHelper.readData(this);
+//        todo = FileHelper.readData2(this);
 
         arrayAdapter = new ArrayAdapter<>(this, R.layout.list_view_layout, arrayList);
         listView.setAdapter(arrayAdapter);
 
-        counter = arrayList.size();
         button.setOnClickListener(new View.OnClickListener() {
             View parentLayout = findViewById(android.R.id.content);
 
@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "onClick: " + getTimestamp());
                 String itemName = editText.getText().toString().toUpperCase();
                 if (itemName.length() > 0) {
-                    arrayList.add(getString(R.string.not_done_24)+ " " + itemName);
+                    arrayList.add(getString(R.string.not_done_24) + " " + itemName);
                     editText.setText("");
                     arrayAdapter.notifyDataSetChanged();
                     showSnackbar(parentLayout, itemName + " " + getString(R.string.item_added));
-                    counter++;
+                    todo++;
                 } else {
                     showSnackbar(parentLayout, getString(R.string.task_cant_empty));
                 }
@@ -121,17 +121,19 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.i(TAG, "onClick: " + getTimestamp());
                         showSnackbar(parentLayout, arrayList.get(position).substring(2) + " " + getString(R.string.item_removed_info));
-                        counter--;
+                        todo--;
                         arrayAdapter.remove(arrayList.get(position));
                         arrayAdapter.notifyDataSetChanged();
                     }
                 });
+                todo--;
                 AlertDialog alertDialog = alert.create();
                 alertDialog.show();
             }
         });
 
     }
+
     public static void setLocale(Activity activity, String languageCode) {
         Locale locale = new Locale(languageCode);
         Locale.setDefault(locale);
@@ -163,16 +165,19 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, Logs.class);
             this.startActivity(intent);
             return true;
-        }
-        if (id == R.id.PL) {
+        } else if (id == R.id.PL) {
             setLocale(MainActivity.this, "pl");
             finish();
             startActivity(getIntent());
-        }
-        if (id == R.id.EN) {
+        } else if (id == R.id.EN) {
             setLocale(MainActivity.this, "en");
             finish();
             startActivity(getIntent());
+        } else if(id == R.id.todo2) {
+            Intent intent = new Intent(MainActivity.this, Todo.class);
+            intent.putExtra("count", todo);
+            this.startActivity(intent);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -194,13 +199,13 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onStop: " + getTimestamp());
         super.onStop();
         FileHelper.writeData(arrayList, getApplicationContext());
+        FileHelper.writeData2(todo, getApplicationContext());
     }
 
     public static String getTimestamp() {
         Long ts = System.currentTimeMillis() / 1000;
         return ts.toString();
     }
-
 
 
 }

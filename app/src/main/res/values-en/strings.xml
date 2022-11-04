@@ -12,6 +12,7 @@
     <string name="item_marked_info"> has been marked as done</string>
     <string name="no_btn">No, mark as done</string>
     <string name="yes_btn">Yes</string>
+    <string name="isDone">Things You have to do:</string>
     <string name="change_lang">Change to Polish</string>
     <string name="change_lang2">Stay in English</string>
     <string name="done_24" translatable="false">&#x2713;</string>

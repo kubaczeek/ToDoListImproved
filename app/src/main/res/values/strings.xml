@@ -16,4 +16,5 @@
     <string name="change_lang2">Change to English</string>
     <string name="done_24" translatable="false">&#x2713;</string>
     <string name="not_done_24" translatable="false">&#xe7f7;</string>
+    <string name="isDone">Things You have to do:</string>
 </resources>
